@@ -1,0 +1,9 @@
+define QLOCAL(INBOUND.QUEUE) defpsist(yes) descr('inbound queue where messages are recieved')
+define QLOCAL(DUPLICATED.QUEUE.ONE) defpsist(yes) descr('first Queue where duplicated from INBOUND.QUEUE is put')
+define QLOCAL(DUPLICATED.QUEUE.TWO) defpsist(yes) descr('first Queue where duplicated from INBOUND.QUEUE is put')
+
+DEFINE CHANNEL(CLIENT_KAFKA) CHLTYPE(SVRCONN)
+ALTER QMGR CHLAUTH(DISABLED) MAXMSGL(4194304) CONNAUTH(' ')
+REFRESH SECURITY TYPE(CONNAUTH)
+
+
